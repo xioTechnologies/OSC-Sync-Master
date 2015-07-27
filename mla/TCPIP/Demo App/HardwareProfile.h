@@ -1,15 +1,15 @@
-/*********************************************************************
+ /*********************************************************************
  *
- *	Hardware specific definitions
+ *	Hardware specific definitions for:
+ *    - PIC32 Ethernet Starter Kit
+ *    - PIC32MX795F512L
+ *    - Internal 10/100 Ethernet MAC with National DP83848 10/100 PHY
  *
  *********************************************************************
  * FileName:        HardwareProfile.h
- * Dependencies:    None
- * Processor:       PIC18, PIC24F, PIC24H, dsPIC30F, dsPIC33F, PIC32
- * Compiler:        Microchip C32 v1.10 or higher
- *					Microchip C30 v3.12 or higher
- *					Microchip C18 v3.34 or higher
- *					HI-TECH PICC-18 PRO 9.63PL2 or higher
+ * Dependencies:    Compiler.h
+ * Processor:       PIC32
+ * Compiler:        Microchip C32 v1.11 or higher
  * Company:         Microchip Technology, Inc.
  *
  * Software License Agreement
@@ -46,167 +46,76 @@
  *
  * Author               Date		Comment
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Howard Schlunder		09/01/2010	Converted to a stub
+ * Howard Schlunder		09/16/2010	Regenerated for specific boards
  ********************************************************************/
+#ifndef HARDWARE_PROFILE_H
+#define HARDWARE_PROFILE_H
 
-// These definitions are set in the MPLAB Project settings.  If you are starting
-// a new project, you should start by modifying one of the pre-existing .mcp 
-// files.  To modify the macro used, in MPLAB IDE, click on Project -> Build 
-// Options... -> Project -> MPLAB XXX C Compiler -> Preprocessor Macros -> 
-// Add.... Note that you may also have to add this macro to the assembler 
-// (MPLAB XXX Assembler tab).
-#if defined(YOUR_BOARD)
-	#include "Configs/HWP YOUR_BOARD.h"
-#elif defined(CFG_INCLUDE_INTERNET_RADIO)
-	// DM183033 Internet Radio board, PIC18F67J60, internal Ethernet
-	#include "Configs/HWP INTERNET_RADIO.h"
-#elif defined(CFG_INCLUDE_PICDN2_ETH97)
-	// DM163024 PICDEM.net 2 board, PIC18F97J60, internal Ethernet (J1 Ethernet jack)
-	#include "Configs/HWP PICDN2_ETH97.h"
-#elif defined(CFG_INCLUDE_PICDN2_ENC28)
-	// DM163024 PICDEM.net 2 board, PIC18F97J60, onboard ENC28J60 (J2 Ethernet jack)
-	#include "Configs/HWP PICDN2_ENC28.h"
-#elif defined(CFG_INCLUDE_PICDN2_ENC624)
-	// DM163024 PICDEM.net 2 board, PIC18F97J60, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	#include "Configs/HWP PICDN2_ENC624.h"
-#elif defined(CFG_INCLUDE_PICDN2_MRF24WB) || defined(CFG_INCLUDE_PICDN2_MRF24WG)
-	// DM163024 PICDEM.net 2 board, PIC18F97J60, AC164136-4 MRF24W Wi-Fi PICtail/PICtail Plus
-	#include "Configs/HWP PICDN2_MRF24W.h"
-        #if defined(CFG_INCLUDE_PICDN2_MRF24WG)
-            #define MRF24WG
-        #endif
-#elif defined(CFG_INCLUDE_PIC18EX_ENC28)
-	// DM183032 PIC18 Explorer board, PIC18F8722/PIC18F87J50/PIC18F87J10/PIC18F87J11/possibly others, AC164121 Ethernet PICtail (ENC28J60)
-	#include "Configs/HWP PIC18EX_ENC28.h"
-#elif defined(CFG_INCLUDE_PIC18EX_ENC624)
-	// DM183032 PIC18 Explorer board, PIC18F8722/PIC18F87J50/PIC18F87J10/PIC18F87J11/possibly others, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	#include "Configs/HWP PIC18EX_ENC624.h"
-#elif defined(CFG_INCLUDE_PIC18EX_MRF24WB) || defined(CFG_INCLUDE_PIC18EX_MRF24WG)
-	// DM183032 PIC18 Explorer board, PIC18F8722/PIC18F87J50/PIC18F87J10/PIC18F87J11/possibly others, AC164136-4 MRF24W Wi-Fi PICtail/PICtail Plus
-	#include "Configs/HWP PIC18EX_MRF24W.h"
-        #if defined(CFG_INCLUDE_PIC18EX_MRF24WG)
-            #define MRF24WG
-        #endif
-#elif defined(CFG_INCLUDE_DA210_BRD_ENC28)
-	// DM240312 PIC24FJ256DA210 Development Board, PIC24FJ256DA210, AC164123 Ethernet PICtail Plus (ENC28J60)
-	#include "Configs/HWP DA210_BRD_ENC28.h"
-#elif defined(CFG_INCLUDE_DA210_BRD_ENC624_PSP5_IB)
-	// DM240312 PIC24FJ256DA210 Development Board, PIC24FJ256DA210, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in PSP Mode 5, Indirect addressing (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = GND, PSPCFG3 = 3V3)
-	#include "Configs/HWP DA210_BRD_ENC624 PSP5_IB.h"
-#elif defined(CFG_INCLUDE_DA210_BRD_ENC624)
-	// DM240312 PIC24FJ256DA210 Development Board, PIC24FJ256DA210, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in SPI mode (using J2 side edge connector)
-	#include "Configs/HWP DA210_BRD_ENC624.h"
-#elif defined(CFG_INCLUDE_DA210_BRD_MRF24WB) || defined(CFG_INCLUDE_DA210_BRD_MRF24WG)
-	// DM240312 PIC24FJ256DA210 Development Board, PIC24FJ256DA210, AC164136-4 MRF24W Wi-Fi PICtail/PICtail Plus
-	#include "Configs/HWP DA210_BRD_MRF24W.h"
-        #if defined(CFG_INCLUDE_DA210_BRD_MRF24WG)
-            #define MRF24WG
-        #endif
-#elif defined(CFG_INCLUDE_EX16_ENC28)
-	// DM240001 Explorer 16 board, PIC24FJ128GA010/PIC24FJ256GB110/PIC24FJ256GA110/PIC24FJ256GB210/PIC24HJ256GP610/dsPIC33FJ256GP710/PIC32MX360F512L/PIC32MX460F512L/PIC32MX795F512L/possibly others, AC164123 Ethernet PICtail Plus (ENC28J60)
-	#if defined(__C30__)
-		#include "Configs/HWP EX16_ENC28 XC16.h"
-	#else
-		#include "Configs/HWP EX16_ENC28 XC32.h"
-	#endif
-#elif defined(CFG_INCLUDE_EX16_ENC624_PSP5_I)
-	// DM240001 Explorer 16 board, PIC24FJ128GA010/PIC24FJ256GB110/PIC24FJ256GA110/PIC24FJ256GB210/PIC24HJ256GP610/dsPIC33FJ256GP710/PIC32MX360F512L/PIC32MX460F512L/PIC32MX795F512L/possibly others, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in PSP Mode 5, Indirect addressing (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = GND, PSPCFG3 = 3V3)
-	#if defined(__C30__)
-		#include "Configs/HWP EX16_ENC624 PSP5_I XC16.h"
-	#else
-		#include "Configs/HWP EX16_ENC624 PSP5_I XC32.h"	
-	#endif
-#elif defined(CFG_INCLUDE_EX16_ENC624_PSP5_IB)
-	// DM240001 Explorer 16 board, PIC24FJ128GA010/PIC24FJ256GB110/PIC24FJ256GA110/PIC24FJ256GB210/PIC24HJ256GP610/dsPIC33FJ256GP710/PIC32MX360F512L/PIC32MX460F512L/PIC32MX795F512L/possibly others, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in bit-banged PSP Mode 5, Indirect addressing (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = GND, PSPCFG3 = 3V3)
-	#include "Configs/HWP EX16_ENC624 PSP5_IB XC16.h"
-#elif defined(CFG_INCLUDE_EX16_ENC624_PSP9)
-	// DM240001 Explorer 16 board, PIC24FJ128GA010/PIC24FJ256GB110/PIC24FJ256GA110/PIC24FJ256GB210/PIC24HJ256GP610/dsPIC33FJ256GP710/PIC32MX360F512L/PIC32MX460F512L/PIC32MX795F512L/possibly others, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in PSP Mode 9 (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = 3V3, PSPCFG3 = 3V3)
-	#if defined(__C30__)
-		#include "Configs/HWP EX16_ENC624 PSP9 XC16.h"	
-	#else
-		#include "Configs/HWP EX16_ENC624 PSP9 XC32.h"
-	#endif
-#elif defined(CFG_INCLUDE_EX16_ENC624)
-	// DM240001 Explorer 16 board, PIC24FJ128GA010/PIC24FJ256GB110/PIC24FJ256GA110/PIC24FJ256GB210/PIC24HJ256GP610/dsPIC33FJ256GP710/PIC32MX360F512L/PIC32MX460F512L/PIC32MX795F512L/possibly others, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in SPI mode (using J2 side edge connector)
-	#if defined(__C30__)
-		#include "Configs/HWP EX16_ENC624 XC16.h"	
-	#else
-		#include "Configs/HWP EX16_ENC624 XC32.h"	
-	#endif
-#elif defined(CFG_INCLUDE_EX16_MRF24WB) || defined(CFG_INCLUDE_EX16_MRF24WG)
-	// DM240001 Explorer 16 board, PIC24FJ128GA010/PIC24FJ256GB110/PIC24FJ256GA110/PIC24FJ256GB210/PIC24HJ256GP610/dsPIC33FJ256GP710/PIC32MX360F512L/PIC32MX460F512L/PIC32MX795F512L/possibly others, AC164136-4 MRF24W Wi-Fi PICtail/PICtail Plus
-	#if defined(__C30__)
-		#include "Configs/HWP EX16_MRF24W XC16.h"
-	#else
-		#include "Configs/HWP EX16_MRF24W XC32.h"
-	#endif
-        #if defined(CFG_INCLUDE_EX16_MRF24WG)
-            #define MRF24WG
-        #endif
-#elif defined(CFG_INCLUDE_PIC32_ETH_SK_ETH795)
-	// DM320004 PIC32 Ethernet Starter Kit, PIC32MX795F512L, internal Ethernet (National DP83848 PHY)
-	#include "Configs/HWP PIC32_ETH_SK_ETH795.h"
-#elif defined(CFG_INCLUDE_PIC32_GP_SK_ENC28)
-	// DM320001 PIC32 Starter Kit (General Purpose), PIC32MX360F512L, DM320002 PIC32 I/O Expansion Board, AC164123 Ethernet PICtail Plus (ENC28J60)
-	#include "Configs/HWP PIC32_GP_SK_ENC28.h"
-#elif defined(CFG_INCLUDE_PIC32_GP_SK_ENC624_PSP5_I)
-	// DM320001 PIC32 Starter Kit (General Purpose), PIC32MX360F512L, DM320002 PIC32 I/O Expansion Board, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in PSP Mode 5, Indirect addressing (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = GND, PSPCFG3 = 3V3)
-	#include "Configs/HWP PIC32_GP_SK_ENC624 PSP5_I.h"
-#elif defined(CFG_INCLUDE_PIC32_GP_SK_ENC624_PSP9)
-	// DM320001 PIC32 Starter Kit (General Purpose), PIC32MX360F512L, DM320002 PIC32 I/O Expansion Board, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in PSP Mode 9 (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = 3V3, PSPCFG3 = 3V3)
-	#include "Configs/HWP PIC32_GP_SK_ENC624 PSP9.h"
-#elif defined(CFG_INCLUDE_PIC32_GP_SK_ENC624)
-	// DM320001 PIC32 Starter Kit (General Purpose), PIC32MX360F512L, DM320002 PIC32 I/O Expansion Board, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in SPI mode (using J2 side edge connector)
-	#include "Configs/HWP PIC32_GP_SK_ENC624.h"
-#elif defined(CFG_INCLUDE_PIC32_GP_SK_MRF24WB) || defined(CFG_INCLUDE_PIC32_GP_SK_MRF24WG)
-	// DM320001 PIC32 Starter Kit (General Purpose), PIC32MX360F512L, DM320002 PIC32 I/O Expansion Board, AC164136-4 MRF24W Wi-Fi PICtail/PICtail Plus
-	#include "Configs/HWP PIC32_GP_SK_MRF24W.h"
-        #if defined(CFG_INCLUDE_PIC32_GP_SK_MRF24WG)
-            #define MRF24WG
-        #endif
-#elif defined(CFG_INCLUDE_PIC32_USB_SK_ENC28)
-	// DM320003-1 PIC32 USB Starter Kit II, PIC32MX795F512L, DM320002 PIC32 I/O Expansion Board, AC164123 Ethernet PICtail Plus (ENC28J60) (installed in SPI 2 slot)
-	#include "Configs/HWP PIC32_USB_SK_ENC28.h"
-#elif defined(CFG_INCLUDE_PIC32_USB_SK_ENC624_PSP5_I)
-	// DM320003-1 PIC32 USB Starter Kit II, PIC32MX795F512L, DM320002 PIC32 I/O Expansion Board, AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) (installed in SPI 2 slot)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in PSP Mode 5, Indirect addressing (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = GND, PSPCFG3 = 3V3)
-	#include "Configs/HWP PIC32_USB_SK_ENC624 PSP5_I.h"
-#elif defined(CFG_INCLUDE_PIC32_USB_SK_ENC624_PSP9)
-	// DM320003-1 PIC32 USB Starter Kit II, PIC32MX795F512L, DM320002 PIC32 I/O Expansion Board, AC164123 Ethernet PICtail Plus (ENC28J60) (installed in SPI 2 slot)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in PSP Mode 9 (using J1 side edge connector, PMA to AD = open, PMA to A = open, PSPCFG1&4 = GND, PSPCFG2 = 3V3, PSPCFG3 = 3V3)
-	#include "Configs/HWP PIC32_USB_SK_ENC624 PSP9.h"
-#elif defined(CFG_INCLUDE_PIC32_USB_SK_ENC624)
-	// DM320003-1 PIC32 USB Starter Kit II, PIC32MX795F512L, DM320002 PIC32 I/O Expansion Board, AC164123 Ethernet PICtail Plus (ENC28J60) (installed in SPI 2 slot)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in SPI mode (using J2 side edge connector), installed in SPI 2 slot
-	#include "Configs/HWP PIC32_USB_SK_ENC624.h"
-#elif defined(CFG_INCLUDE_PIC32_USB_SK_MRF24WB) || defined(CFG_INCLUDE_PIC32_USB_SK_MRF24WG)
-	// DM320003-1 PIC32 USB Starter Kit II, PIC32MX795F512L, DM320002 PIC32 I/O Expansion Board, AC164136-4 MRF24W Wi-Fi PICtail/PICtail Plus (installed in SPI 2 slot)
-	#include "Configs/HWP PIC32_USB_SK_MRF24W.h"
-        #if defined(CFG_INCLUDE_PIC32_USB_SK_MRF24WG)
-            #define MRF24WG
-        #endif
-#elif defined(CFG_INCLUDE_DSPIC33E_SK_ENC624)
-	// dsPIC33E Starter Kit, dsPIC33EP512MU810, , DM320002 PIC32 I/O Expansion Board, AC164123 Ethernet PICtail Plus (ENC28J60) (installed in SPI 2 slot)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in SPI mode (using J2 side edge connector), installed in SPI 2 slot
-	#include "Configs/HWP dsPIC33E_SK_ENC624 XC16.h"
-#elif defined(CFG_INCLUDE_DSPIC33E_SK_ENC624_PSP5_I)
-	// dsPIC33E Starter Kit, dsPIC33EP512MU810, , DM320002 PIC32 I/O Expansion Board, AC164123 Ethernet PICtail Plus (ENC28J60) (installed in SPI 2 slot)
-	// AC164132 Fast 100Mbps Ethernet PICtail/PICtail Plus (ENC624J600) in SPI mode (using J2 side edge connector), installed in SPI 2 slot
-	#include "Configs/HWP dsPIC33E_SK_ENC624 PSP5_I.h"
-#elif defined(CFG_INCLUDE_DSPIC33E_SK_MRF24WB) || defined(CFG_INCLUDE_DSPIC33E_SK_MRF24WG)
-	// dsPIC33E Starter Kit, dsPIC33EP512MU810, DM320002 PIC32 I/O Expansion Board, AC164136-4 MRF24W Wi-Fi PICtail/PICtail Plus (installed in SPI 2 slot)
-	#include "Configs/HWP dsPIC33E_SK_MRF24W.h"
-        #if defined(CFG_INCLUDE_DSPIC33E_SK_MRF24WG)
-            #define MRF24WG
-        #endif
-#else
-	#error "No extended HWP .h included.  Add the appropriate compiler macro to the MPLAB project."
+#include "Compiler.h"
+
+// Define a macro describing this hardware set up (used in other files)
+#define PIC32_ENET_SK_DM320004
+
+// Set configuration fuses (but only in MainDemo.c where THIS_IS_STACK_APPLICATION is defined)
+#if defined(THIS_IS_STACK_APPLICATION)
+	#pragma config FPLLODIV = DIV_1, FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FWDTEN = OFF, FPBDIV = DIV_1, POSCMOD = XT, FNOSC = PRIPLL, CP = OFF
+	#pragma config FMIIEN = OFF, FETHIO = OFF	// external PHY in RMII/alternate configuration
 #endif
 
+
+// Clock frequency values
+// These directly influence timed events using the Tick module.  They also are used for UART and SPI baud rate generation.
+#define GetSystemClock()		(80000000ul)			// Hz
+#define GetInstructionClock()	(GetSystemClock()/1)	// Normally GetSystemClock()/4 for PIC18, GetSystemClock()/2 for PIC24/dsPIC, and GetSystemClock()/1 for PIC32.  Might need changing if using Doze modes.
+#define GetPeripheralClock()	(GetSystemClock()/1)	// Normally GetSystemClock()/4 for PIC18, GetSystemClock()/2 for PIC24/dsPIC, and GetSystemClock()/1 for PIC32.  Divisor may be different if using a PIC32 since it's configurable.
+
+
+// Hardware I/O pin mappings
+
+// LEDs
+#define LED0_TRIS			(TRISDbits.TRISD0)	// Ref LED1
+#define LED0_IO				(LATDbits.LATD0)
+#define LED1_TRIS			(TRISDbits.TRISD1)	// Ref LED2
+#define LED1_IO				(LATDbits.LATD1)
+#define LED2_TRIS			(TRISDbits.TRISD2)	// Ref LED3
+#define LED2_IO				(LATDbits.LATD2)
+#define LED3_TRIS			(LED2_TRIS)			// No such LED
+#define LED3_IO				(LATDbits.LATD6)
+#define LED4_TRIS			(LED2_TRIS)			// No such LED
+#define LED4_IO				(LATDbits.LATD6)
+#define LED5_TRIS			(LED2_TRIS)			// No such LED
+#define LED5_IO				(LATDbits.LATD6)
+#define LED6_TRIS			(LED2_TRIS)			// No such LED
+#define LED6_IO				(LATDbits.LATD6)
+#define LED7_TRIS			(LED2_TRIS)			// No such LED
+#define LED7_IO				(LATDbits.LATD6)
+#define LED_GET()			((unsigned char)LATD & 0x07)
+#define LED_PUT(a)			do{LATD = (LATD & 0xFFF8) | ((a)&0x07);}while(0)
+
+// Momentary push buttons
+#define BUTTON0_TRIS		(TRISDbits.TRISD6)	// Ref SW1
+#define BUTTON0_IO			(PORTDbits.RD6)
+#define BUTTON1_TRIS		(TRISDbits.TRISD7)	// Ref SW2
+#define BUTTON1_IO			(PORTDbits.RD7)
+#define BUTTON2_TRIS		(TRISDbits.TRISD13)	// Ref SW3
+#define BUTTON2_IO			(PORTDbits.RD13)
+#define BUTTON3_TRIS		(TRISDbits.TRISD13)	// No BUTTON3 on this board
+#define BUTTON3_IO			(1)
+
+// UART configuration (not too important since we don't have a UART 
+// connector attached normally, but needed to compile if the STACK_USE_UART 
+// or STACK_USE_UART2TCP_BRIDGE features are enabled.
+#define UARTTX_TRIS			(TRISFbits.TRISF3)
+#define UARTRX_TRIS			(TRISFbits.TRISF2)
+
+// External National PHY configuration
+#define	PHY_RMII				// external PHY runs in RMII mode
+#define	PHY_CONFIG_ALTERNATE	// alternate configuration used
+#define	PHY_ADDRESS			0x1	// the address of the National DP83848 PHY
+
+// Note, it is not possible to use a MRF24WB0M Wi-Fi PICtail Plus 
+// card with this starter kit.  The required interrupt signal, among 
+// possibly other I/O pins aren't available on the Starter Kit board.
+
+
+#endif // #ifndef HARDWARE_PROFILE_H
