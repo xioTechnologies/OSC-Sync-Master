@@ -65,7 +65,6 @@
         <itemPath>../../../Microchip/Include/TCPIP Stack/regdef.h</itemPath>
       </logicalFolder>
       <itemPath>../HardwareProfile.h</itemPath>
-      <itemPath>../MainDemo.h</itemPath>
       <itemPath>../TCPIPConfig.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LibraryFiles"
