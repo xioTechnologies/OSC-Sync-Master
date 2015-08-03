@@ -11,6 +11,7 @@
 **/*.X/nbproject/*.bash
 **/*.X/nbproject/*.properties
 **/*.X/.dep.inc
+**/*.X/.map
 
 ##################
 # Hex archive

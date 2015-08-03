@@ -38,4 +38,8 @@ echo Removing "*.X\nbproject\.dep.inc" files...
 for /f "delims==" %%i in ('dir /b /on /s "%~p0\*.X"') do del "%%i\nbproject\.dep.inc" /f /q
 echo.
 
+echo Removing "*.X\nbproject\.map" files...
+for /f "delims==" %%i in ('dir /b /on /s "%~p0\*.X"') do del "%%i\nbproject\.map" /f /q
+echo.
+
 echo "%~n0.bat" done.
